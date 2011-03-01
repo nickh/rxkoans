@@ -29,7 +29,22 @@ namespace Koans.Tests
 
         public static void AssertLesson<T>(Action<T> test, Action<T> answer) where T : new()
         {
+            AssertLesson(test, answer,testFailure: true);
+        }
+
+        public static void AssertLesson<T>(Action<T> test, Action<T> answer, bool testFailure) where T : new()
+        {
             var l =  new T();
+            if (testFailure)
+            {
+                VerifyFailure(test, l);
+            }
+            answer(l);
+            test(l);
+        }
+
+        private static void VerifyFailure<T>(Action<T> test, T l)
+        {
             var failed = false;
             try
             {
@@ -40,9 +55,6 @@ namespace Koans.Tests
                 failed = true;
             }
             Assert.IsTrue(failed);
-            answer(l);
-            test(l);
-
         }
     }
 }
