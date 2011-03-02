@@ -1,5 +1,6 @@
 ﻿using System;
 using Koans.Lessons;
+using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Koans.Tests
