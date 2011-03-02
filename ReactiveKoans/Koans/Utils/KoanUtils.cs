@@ -1,7 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Koans.Tests
+namespace Koans.Utils
 {
     public class KoanUtils
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Koans.Lessons
+namespace Koans.Utils
 {
     public static class StringUtils
     {
