@@ -41,9 +41,6 @@
     <Reference Include="System.CoreEx">
       <HintPath>..\reference\System.CoreEx.dll</HintPath>
     </Reference>
-    <Reference Include="System.Observable">
-      <HintPath>..\reference\System.Observable.dll</HintPath>
-    </Reference>
     <Reference Include="System.Reactive">
       <HintPath>..\reference\System.Reactive.dll</HintPath>
     </Reference>
@@ -61,6 +58,8 @@
     <Compile Include="Lessons\Lesson4Events.cs" />
     <Compile Include="Lessons\Lesson2ComposableObservations.cs" />
     <Compile Include="Lessons\Lesson3Time.cs" />
+    <Compile Include="Lessons\LessonsRx.cs" />
+    <Compile Include="Utils\Range.cs" />
     <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Lesson3TimeTest.cs" />

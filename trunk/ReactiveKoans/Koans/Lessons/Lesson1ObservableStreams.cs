@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Koans.Utils;
 
 
 namespace Koans.Lessons
@@ -42,9 +44,27 @@ namespace Koans.Lessons
         public void EveryThingCounts()
         {
             int received = 0;
-            var names = new[] { 3, 4 };
-            names.ToObservable().Subscribe(x => received += x);
+            var numbers = new[] { 3, 4 };
+            numbers.ToObservable().Subscribe(x => received += x);
             Assert.AreEqual(___, received);
+        }
+        [TestMethod]
+        public void DoingInTheMiddle()
+        {
+            var status = new List<String>();
+            var daysTillTest = Range.Create(4, 1).ToObservable();
+            daysTillTest.Do(d => status.Add(d + "=" + (d == 1 ? "Study Like Mad" : ___))).Subscribe();
+            Assert.AreEqual("[4=Party, 3=Party, 2=Party, 1=Study Like Mad]", status.AsString());
+        }
+        [TestMethod]
+        public void NothingListensUntilYouSubscribe()
+        {
+            int sum = 0;
+            var numbers = Range.Create(1,10).ToObservable();
+            var observable = numbers.Do(n =>sum += n);
+            Assert.AreEqual(0, sum);
+            observable.___();
+            Assert.AreEqual(10*11/2,sum);
         }
              #region Ignore
 

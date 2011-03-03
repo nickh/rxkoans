@@ -41,6 +41,7 @@ namespace Koans.Utils
             }
             answer(l);
             test(l);
+            StringUtils.Reset();
         }
 
         private static void VerifyFailure<T>(Action<T> test, T l)
