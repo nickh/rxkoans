@@ -15,6 +15,9 @@ namespace Koans.Tests
             Verify(l => l.SimpleReturn(), "Foo");
             Verify(l => l.TheLastEvent(), "Bar");
             Verify(l => l.EveryThingCounts(), 7);
+            Verify(l => l.DoingInTheMiddle(), "Party");
+            KoanUtils.AssertLesson<Lesson1ObservableStreams>(l => l.NothingListensUntilYouSubscribe(), l => StringUtils.call = s => ObservableExtensions.Subscribe((IObservable<int>)s));
+           
         }
 
 

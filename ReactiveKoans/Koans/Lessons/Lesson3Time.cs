@@ -22,8 +22,8 @@ namespace Koans.Lessons
         public void Wait1Second()
         {
             string received = "";
-            TimeSpan time = TimeSpan.FromSeconds(___);
-            Scheduler.Immediate.Schedule(() => received = "Finished", time);
+            TimeSpan delay = TimeSpan.FromSeconds(___);
+            Scheduler.Immediate.Schedule(() => received = "Finished", delay);
             Assert.AreEqual("Finished", received);
         }
 
@@ -33,7 +33,7 @@ namespace Koans.Lessons
         {
             string received = "";
             var time = TimeSpan.FromSeconds(___);
-            Observable.Return("Godot").Delay(time).Run(x => received = x);
+            Observable.Return("Godot", Scheduler.Immediate).Delay(time).Run(x => received = x);
             Assert.AreEqual("Godot", received);
         }
 
@@ -41,10 +41,10 @@ namespace Koans.Lessons
         public void AWatchedPot()
         {
             string received = "";
-            var time = TimeSpan.FromSeconds(___);
-            var quick = TimeSpan.FromSeconds(2);
-            var tepid = Observable.Return("tepid");
-            Observable.Return("Boiling").Delay(time).Timeout(quick, tepid).Run(x => received = x);
+            var delay = TimeSpan.FromSeconds(___);
+            var timeout = TimeSpan.FromSeconds(2);
+            var timeoutEvent = Observable.Return("Tepid");
+            Observable.Return("Boiling").Delay(delay).Timeout(timeout, timeoutEvent).Run(x => received = x);
             Assert.AreEqual("Boiling", received);
         }
 

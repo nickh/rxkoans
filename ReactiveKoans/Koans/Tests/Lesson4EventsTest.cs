@@ -11,10 +11,9 @@ namespace Koans.Tests
         
 
         [TestMethod]
-        [Timeout(2000)]
         public void TestAllQuestions()
         {
-                 Verify(l => l.TheMainEvent(), "[B, A, R]");
+                 Verify(l => l.TheMainEvent(), "BAR");
         }
 
 

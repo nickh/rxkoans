@@ -26,13 +26,6 @@ namespace Koans.Lessons
         }
 
         [TestMethod]
-        public void ComposableFilters()
-        {
-            var numbers = Observable.Range(1, 10);
-            numbers.Where(x => x > ___).Sum().Subscribe(x => Assert.AreEqual(19, x));
-        }
-
-        [TestMethod]
         public void WeWroteThis()
         {
             var received = new List<String>();
@@ -40,6 +33,8 @@ namespace Koans.Lessons
             names.ToObservable().Where(n => n.Length < ___).Subscribe(x => received.Add(x));
             Assert.AreEqual("[Bart, Wes, Erik]", received.AsString());
         }
+        
+       
 
         [TestMethod]
         public void ConvertingEvents()
@@ -57,6 +52,13 @@ namespace Koans.Lessons
             var names = new[] { 2, 4, 6, 8 };
             names.ToObservable().All(x => x.IsEven()).Subscribe(x => received = x);
             Assert.AreEqual(____, received);
+        }
+        [TestMethod]
+        public void CompositionMeansTheSumIsGreaterThanTheParts()
+        {
+
+            var numbers = Observable.Range(1, 10);
+            numbers.Where(x => x > ___).Sum().Subscribe(x => Assert.AreEqual(19, x));
         }
          #region Ignore
 
