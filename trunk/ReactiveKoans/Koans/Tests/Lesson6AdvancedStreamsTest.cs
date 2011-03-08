@@ -15,8 +15,6 @@ namespace Koans.Tests
 			Verify(l => l.SplittingUp(), 2);
 			KoanUtils.AssertLesson<Lesson6AdvancedStreams>(l => l.NeedToSubscribeImediatelyWhenSplitting(), l => StringUtils.call = (s,p) => ObservableExtensions.Subscribe((IObservable<double>)s, (Action<double>) p[0]));
 			Verify(l => l.MultipleSubscriptions(), 2.0);
-
-
 		}
 
 
