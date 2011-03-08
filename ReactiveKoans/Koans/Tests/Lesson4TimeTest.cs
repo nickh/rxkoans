@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Koans.Tests
 {
     [TestClass]
-    public class Lesson3TimeTest
+    public class Lesson4TimeTest
     {
         [TestMethod]
         [Timeout(2000)]
@@ -18,7 +18,7 @@ namespace Koans.Tests
         }
 
 
-        public void Verify(Action<Lesson3Time> test, int answer)
+        public void Verify(Action<Lesson4Time> test, int answer)
         {
             KoanUtils.AssertLesson(test, l => l.___ = answer, testFailure: false);
         }

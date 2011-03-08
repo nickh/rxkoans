@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Koans.Lessons
 {
     [TestClass]
-    public class Lesson3Time
+    public class Lesson4Time
     {
         /*
          * How to Run: Press Ctrl+R,T (go ahead, try it now)

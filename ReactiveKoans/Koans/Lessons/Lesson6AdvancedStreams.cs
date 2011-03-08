@@ -8,7 +8,7 @@ using Koans.Utils;
 namespace Koans.Lessons
 {
     [TestClass]
-    public class LessonsRx
+    public class Lesson6AdvancedStreams
     {
 
 
