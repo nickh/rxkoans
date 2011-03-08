@@ -54,19 +54,21 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lessons\Lesson3Linq.cs" />
+    <Compile Include="Lessons\Lesson7AsyncInvoke.cs" />
     <Compile Include="Lessons\Lesson1ObservableStreams.cs" />
-    <Compile Include="Lessons\Lesson4Events.cs" />
+    <Compile Include="Lessons\Lesson5Events.cs" />
     <Compile Include="Lessons\Lesson2ComposableObservations.cs" />
-    <Compile Include="Lessons\Lesson3Time.cs" />
-    <Compile Include="Lessons\LessonsRx.cs" />
+    <Compile Include="Lessons\Lesson4Time.cs" />
+    <Compile Include="Lessons\Lesson6AdvancedStreams.cs" />
     <Compile Include="Utils\Range.cs" />
     <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\Lesson3TimeTest.cs" />
+    <Compile Include="Tests\Lesson4TimeTest.cs" />
     <Compile Include="Tests\Lesson2ComposibleTest.cs" />
     <Compile Include="Tests\Lesson1ObservableStreamsTest.cs" />
     <Compile Include="Utils\KoanUtils.cs" />
-    <Compile Include="Tests\Lesson4EventsTest.cs" />
+    <Compile Include="Tests\Lesson5EventsTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

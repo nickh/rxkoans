@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Koans.Tests
 {
     [TestClass]
-    public class Lesson4EventsTest
+    public class Lesson5EventsTest
     {
         
 
@@ -17,9 +17,9 @@ namespace Koans.Tests
         }
 
 
-        public void Verify(Action<Lesson4Events> test, object answer)
+        public void Verify(Action<Lesson5Events> test, object answer)
         {
-            KoanUtils.AssertLesson<Lesson4Events>(test, l => l.___ = answer);
+            KoanUtils.AssertLesson<Lesson5Events>(test, l => l.___ = answer);
         }
     }
 }

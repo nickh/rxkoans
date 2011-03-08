@@ -9,28 +9,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Koans.Lessons
 {
     [TestClass]
-    public class Lesson4Events
+    public class Lesson7AsyncInvoke
     {
-        public event EventHandler<TextChangedEventArgs> TextChanged;
-
         [TestMethod]
-        public void TheMainEvent()
-        {
-            var received = new StringBuilder();
-            IObservable<IEvent<TextChangedEventArgs>> textChanges = Observable.FromEvent<TextChangedEventArgs>(this,
-                                                                                                               "TextChanged");
-            using (textChanges.Subscribe(e => received.Append(e.EventArgs.value)))
-            {
-                TextChanged(null, new TextChangedEventArgs {value = "B"});
-                TextChanged(null, new TextChangedEventArgs {value = "A"});
-                TextChanged(null, new TextChangedEventArgs {value = "R"});
-            }
-            TextChanged(null, new TextChangedEventArgs {value = "T"});
-            Assert.AreEqual(___, received.ToString());
-        }
-
-        [TestMethod]
-        // [Timeout(2000)]
         public void TheBloodyHardAsyncInvokationPatter()
         {
             // You need to fill in the 3 ___'s with A,B & C in the order they will execute
@@ -119,16 +100,6 @@ namespace Koans.Lessons
             Assert.AreEqual("D1,D2,D3,D4,D5,", disposed);
         }
         
-        [TestMethod]
-        public void Linq()
-        {
-            var numbers = Observable.Range(1, 100);
-            var results = from x in numbers
-                          where x%11 == 0
-                          select x.ToString();
-            var strings = results.ToEnumerable();
-            Assert.AreEqual("11,22,33,44,55,66,77,88,99", String.Join(",",strings));
-        }
 
 
         private void WaitUntil(Func<bool> func)
@@ -144,21 +115,10 @@ namespace Koans.Lessons
         public const int ____ = 1000;
         public object ___ = "Please Fill in the blank";
 
-        public Lesson4Events()
-        {
-            TextChanged += (o, e) => { };
-        }
 
         #endregion
 
-        /*
-         *obseverable from event multisubscriped
-         *
-         */
+       
     }
 
-    public class TextChangedEventArgs : EventArgs
-    {
-        public string value;
-    }
 }
