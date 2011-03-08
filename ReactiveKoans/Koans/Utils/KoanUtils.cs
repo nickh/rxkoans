@@ -55,7 +55,7 @@ namespace Koans.Utils
             {
                 failed = true;
             }
-            Assert.IsTrue(failed);
+            Assert.IsTrue(failed, "The Lesson is already passing [Need to add a blank]");
         }
     }
 }

@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -60,6 +61,7 @@
     <Compile Include="Lessons\Lesson2ComposableObservations.cs" />
     <Compile Include="Lessons\Lesson4Time.cs" />
     <Compile Include="Lessons\Lesson6AdvancedStreams.cs" />
+    <Compile Include="Tests\Lesson7AsyncInvokeTest.cs" />
     <Compile Include="Tests\Lesson6AdvancedStreamsTest.cs" />
     <Compile Include="Tests\Lesson5EventsTest.cs" />
     <Compile Include="Utils\Range.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Tests\Lesson1ObservableStreamsTest.cs" />
     <Compile Include="Utils\KoanUtils.cs" />
     <Compile Include="Tests\Lesson3LinqTest.cs" />
+    <Compile Include="Utils\ThreadUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
