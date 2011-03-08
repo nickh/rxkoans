@@ -15,7 +15,7 @@ namespace Koans.Tests
             Verify(l => l.ComposableAddition(), 1000);
             Verify(l => l.CompositionMeansTheSumIsGreaterThanTheParts(), 8);
             Verify(l => l.WeWroteThis(), 5);
-            KoanUtils.AssertLesson<Lesson2ComposableObservations>(l => l.ConvertingEvents(), l => StringUtils.call = s => ((String)s).ToLower());
+            KoanUtils.AssertLesson<Lesson2ComposableObservations>(l => l.ConvertingEvents(), l => StringUtils.call = (s,p) => ((String)s).ToLower());
             KoanUtils.AssertLesson((Action<Lesson2ComposableObservations>) (l => l.CheckingEverything()), l1 => l1.____ = true);
         }
 

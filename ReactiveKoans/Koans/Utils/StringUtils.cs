@@ -6,9 +6,9 @@ namespace Koans.Utils
 {
     public static class StringUtils
     {
-        public static Func<object, object> reset = (s => "Please Fill in the Blank");
-        public static Func<object, object> call = reset;
-
+        public static Func<object, object[],object> reset = ((s,p) => "Please Fill in the Blank");
+        public static Func<object, object[], object> call = reset;
+				
         public static void Reset()
         {
             call = reset;
@@ -20,24 +20,21 @@ namespace Koans.Utils
 
         public static string ___(this string s)
         {
-            return (String)doCall(s);
+        	var r = call((object) s,null);
+        	return (String)r;
         }
-        public static object ___(this Object o)
+
+    	public static object ___(this Object o)
         {
-            return doCall(o);
+    		var r = call(o,null);
+    		return r;
         }
         public static object ____<T>(this IObservable<T> o, Action<T> action)
         {
-            return doCall(o);
+            return call(o, new []{action});
         }
 
-        private static object doCall(object o)
-        {
-            var r = call(o);
-             return r;
-        }
-
-        public static bool IsEven(this int number)
+    	public static bool IsEven(this int number)
         {
             return number%2 == 0;
         }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Concurrency;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -40,7 +38,6 @@ namespace Koans.Lessons
         }
 
         [TestMethod]
-        // [Timeout(2000)]
         public void NiceAndEasyFromAsyncPattern()
         {
             Func<int, double> inc = x => x + 1.5;
@@ -56,32 +53,33 @@ namespace Koans.Lessons
         public void AsyncLongRunning()
         {
             Func<int, double> inc = x =>
-            {
-                Thread.Sleep(1500);
-                return x + 1.5;
-            };
+                                        {
+                                            Thread.Sleep(1500);
+                                            return x + 1.5;
+                                        };
             double result = 0;
             Func<int, IObservable<double>> incAsync = Observable.FromAsyncPattern<int, double>(inc.BeginInvoke,
                                                                                                inc.EndInvoke);
             incAsync(1).Merge(incAsync(1)).Sum().Run(n => result = n);
             Assert.AreEqual(5, result);
         }
+
         [TestMethod]
         public void AsyncLongRunningTimeout()
         {
             Func<int, string> highFive = x =>
-            {
-                Thread.Sleep(1500);
-                return "Give me " + x;
-            };
+                                             {
+                                                 Thread.Sleep(1500);
+                                                 return "Give me " + x;
+                                             };
             string result = null;
-            var incAsync = highFive.ToAsync();
-            var timeout = TimeSpan.FromMilliseconds(500);
-            incAsync(5).Timeout(timeout,Observable.Return("Too Slow Joe")).Run(n => result = n);
+            Func<int, IObservable<string>> incAsync = highFive.ToAsync();
+            TimeSpan timeout = TimeSpan.FromMilliseconds(500);
+            incAsync(5).Timeout(timeout, Observable.Return("Too Slow Joe")).Run(n => result = n);
             Assert.AreEqual(___, result);
         }
 
-        
+
         [TestMethod]
         public void AsyncLongRunningTimeout2()
         {
@@ -93,13 +91,12 @@ namespace Koans.Lessons
             string disposed = null;
             Func<int, IObservable<string>> incAsync = highFive.ToAsync();
             TimeSpan timeout = TimeSpan.FromMilliseconds(500);
-            Func<int, IObservable<string>> launch = (int i) => incAsync(i).Finally(() => disposed += "D" + i+",") ;
-            var all = launch(1).Merge(launch(2)).Merge(launch(3)).Merge(launch(4)).Merge(launch(5));
+            Func<int, IObservable<string>> launch = (int i) => incAsync(i).Finally(() => disposed += "D" + i + ",");
+            IObservable<string> all = launch(1).Merge(launch(2)).Merge(launch(3)).Merge(launch(4)).Merge(launch(5));
             all.Run();
-            
+
             Assert.AreEqual("D1,D2,D3,D4,D5,", disposed);
         }
-        
 
 
         private void WaitUntil(Func<bool> func)
@@ -115,10 +112,6 @@ namespace Koans.Lessons
         public const int ____ = 1000;
         public object ___ = "Please Fill in the blank";
 
-
         #endregion
-
-       
     }
-
 }
