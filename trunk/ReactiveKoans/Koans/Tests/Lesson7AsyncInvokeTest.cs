@@ -1,7 +1,7 @@
-﻿using System;
-using Koans.Lessons;
+﻿using Koans.Lessons;
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CurrentLesson = Koans.Lessons.Lesson7AsyncInvoke;
 
 namespace Koans.Tests
 {
@@ -17,28 +17,11 @@ namespace Koans.Tests
 			                                                                                        		l._____ = "A";
 			                                                                                        		l.______ = "B";
 			                                                                                        	});
-			Verify(l => l.NiceAndEasyFromAsyncPattern(), 48);
+			KoanUtils.Verify<CurrentLesson>(l => l.NiceAndEasyFromAsyncPattern(), 48);
 			// Note: I don't know how to properly test AsynchronousRuntimeIsNotSummed
-			Verify(l => l.TimeoutMeansStopListeningDoesNotMeanAbort(), "Give me 5, Joe");
-			Verify(l => l.AsynchronousObjectsAreProperlyDisposed(), "D");
+			KoanUtils.Verify<CurrentLesson>(l => l.TimeoutMeansStopListeningDoesNotMeanAbort(), "Give me 5, Joe");
+			KoanUtils.Verify<CurrentLesson>(l => l.AsynchronousObjectsAreProperlyDisposed(), "D");
 		}
-
-
-		public void Verify(Action<Lesson7AsyncInvoke> test, object answer)
-		{
-			KoanUtils.AssertLesson(test, l => FillAll(l, answer));
-		}
-
-		private void FillAll(Lesson7AsyncInvoke l, object answer)
-		{
-			if (answer is string)
-			{
-				l.____ = (string) answer;
-			}
-			if (answer is int)
-			{
-				l.___ = (int) answer;
-			}
-		}
+		
 	}
 }

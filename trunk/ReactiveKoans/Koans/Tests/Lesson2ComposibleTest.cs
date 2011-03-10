@@ -1,28 +1,22 @@
 ﻿using System;
-using Koans.Lessons;
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CurrentLesson = Koans.Lessons.Lesson2ComposableObservations;
 
 namespace Koans.Tests
 {
-    [TestClass]
-    public class Lesson2ComposibleTest
-    {
-        [TestMethod]
-        public void TestAllQuestions()
-        {
-
-            Verify(l => l.ComposableAddition(), 1000);
-            Verify(l => l.CompositionMeansTheSumIsGreaterThanTheParts(), 8);
-            Verify(l => l.WeWroteThis(), 5);
-            KoanUtils.AssertLesson<Lesson2ComposableObservations>(l => l.ConvertingEvents(), l => StringUtils.call = (s,p) => ((String)s).ToLower());
-            KoanUtils.AssertLesson((Action<Lesson2ComposableObservations>) (l => l.CheckingEverything()), l1 => l1.____ = true);
-        }
-
-
-        public void Verify(Action<Lesson2ComposableObservations> test, int answer)
-        {
-            KoanUtils.AssertLesson(test, l => l.___ = answer);
-        }
-    }
+	[TestClass]
+	public class Lesson2ComposibleTest
+	{
+		[TestMethod]
+		public void TestAllQuestions()
+		{
+			KoanUtils.Verify<CurrentLesson>(l => l.ComposableAddition(), 1000);
+			KoanUtils.Verify<CurrentLesson>(l => l.CompositionMeansTheSumIsGreaterThanTheParts(), 8);
+			KoanUtils.Verify<CurrentLesson>(l => l.WeWroteThis(), 5);
+			KoanUtils.AssertLesson<CurrentLesson>(l => l.ConvertingEvents(),
+			                                      l => StringUtils.call = (s, p) => ((String) s).ToLower());
+			KoanUtils.AssertLesson((Action<CurrentLesson>) (l => l.CheckingEverything()), l1 => l1.____ = true);
+		}
+	}
 }
