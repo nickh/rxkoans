@@ -1,7 +1,7 @@
 ﻿using System;
-using Koans.Lessons;
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CurrentLesson = Koans.Lessons.Lesson6AdvancedStreams;
 
 namespace Koans.Tests
 {
@@ -11,25 +11,14 @@ namespace Koans.Tests
 		[TestMethod]
 		public void TestAllQuestions()
 		{
-			Verify(l => l.Merging(), "1 A 2 B 3 C ");
-			Verify(l => l.SplittingUp(), 2);
-			KoanUtils.AssertLesson<Lesson6AdvancedStreams>(l => l.NeedToSubscribeImediatelyWhenSplitting(), l => StringUtils.call = (s,p) => ObservableExtensions.Subscribe((IObservable<double>)s, (Action<double>) p[0]));
-			Verify(l => l.MultipleSubscriptions(), 2.0);
-		}
-
-
-		public void Verify(Action<Lesson6AdvancedStreams> test, object answer)
-		{
-			KoanUtils.AssertLesson(test, l=> FillAll(l,answer));
-		}
-
-		private void FillAll(Lesson6AdvancedStreams l, object answer)
-		{
-			l.___ = answer;
-			if (answer is int)
-			{
-				l.____ = (int) answer;
-			}
+			KoanUtils.Verify<CurrentLesson>(l => l.Merging(), "1 A 2 B 3 C ");
+			KoanUtils.Verify<CurrentLesson>(l => l.SplittingUp(), 2);
+			KoanUtils.AssertLesson<CurrentLesson>(l => l.NeedToSubscribeImediatelyWhenSplitting(),
+			                                      l =>
+			                                      StringUtils.call =
+			                                      (s, p) =>
+			                                      ObservableExtensions.Subscribe((IObservable<double>) s, (Action<double>) p[0]));
+			KoanUtils.Verify<CurrentLesson>(l => l.MultipleSubscriptions(), 2.0);
 		}
 	}
 }
