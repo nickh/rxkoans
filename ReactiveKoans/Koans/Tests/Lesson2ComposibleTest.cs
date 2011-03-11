@@ -12,11 +12,13 @@ namespace Koans.Tests
 		public void TestAllQuestions()
 		{
 			KoanUtils.Verify<CurrentLesson>(l => l.ComposableAddition(), 1000);
-			KoanUtils.Verify<CurrentLesson>(l => l.CompositionMeansTheSumIsGreaterThanTheParts(), 8);
+			KoanUtils.Verify<CurrentLesson>(l => l.ComposeableBeforeAndAfter(), "123456");
 			KoanUtils.Verify<CurrentLesson>(l => l.WeWroteThis(), 5);
 			KoanUtils.AssertLesson<CurrentLesson>(l => l.ConvertingEvents(),
 			                                      l => StringUtils.call = (s, p) => ((String) s).ToLower());
+			KoanUtils.Verify<CurrentLesson>(l => l.CreatingAMoreRelevantEventStream(), 50);
 			KoanUtils.AssertLesson((Action<CurrentLesson>) (l => l.CheckingEverything()), l1 => l1.____ = true);
+			KoanUtils.Verify<CurrentLesson>(l => l.CompositionMeansTheSumIsGreaterThanTheParts(), 8);
 		}
 	}
 }

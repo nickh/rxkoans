@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
+using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Koans.Lessons
@@ -14,20 +16,45 @@ namespace Koans.Lessons
          * Step 3: run it again
          * Note: Do not change anything other than the blank
          */
-        [TestMethod]
-        public void Linq()
-        {
-            var numbers = Observable.Range(1, 100);
-            var results = from x in numbers
-                          where x % ____ == 0
-                          select x.ToString();
-            var strings = results.ToEnumerable();
-            Assert.AreEqual("11,22,33,44,55,66,77,88,99", String.Join(",", strings));
-        }
+			[TestMethod]
+			public void Linq()
+			{
+				var numbers = Observable.Range(1, 100);
+				var results = from x in numbers
+											where x % ____ == 0
+											select x.ToString();
+				var strings = results.ToEnumerable();
+				Assert.AreEqual("11,22,33,44,55,66,77,88,99", String.Join(",", strings));
+			}
+
+			[TestMethod]
+			public void LinqOverMouseEvents()
+			{
+				IObservable<Point> clicks = RxKoans.CreateMouseEvents(new Point(100,50), new Point(75,75), new Point(40,80) );
+				var results = from click in clicks
+											where click.X == click.Y
+											select ___;
+				results.Subscribe(HighlightCrossHairs);
+			}
 
         #region Ignore
 
-        public int ____ = 1;
-        #endregion
+			public int ____ = 1;
+			public object ___ = "Please Fill in the blank";
+
+			public void HighlightCrossHairs(object o)
+			{
+				if (o is Point)
+				{
+					var p = (Point) o;
+					Assert.AreEqual(p.X, p.Y);
+				}
+				else
+				{
+					Assert.Fail(o.ToString());
+				}
+			}
+
+    	#endregion
     }
 }

@@ -43,6 +43,7 @@
     <Reference Include="System.CoreEx">
       <HintPath>..\reference\System.CoreEx.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Reactive">
       <HintPath>..\reference\System.Reactive.dll</HintPath>
     </Reference>
@@ -53,6 +54,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lessons\Lesson0Lambdas.cs" />
     <Compile Include="Lessons\WriteYourOwnLesson.cs" />
     <Compile Include="Lessons\Lesson3Linq.cs" />
     <Compile Include="Lessons\Lesson7AsyncInvoke.cs" />
@@ -61,10 +63,13 @@
     <Compile Include="Lessons\Lesson2ComposableObservations.cs" />
     <Compile Include="Lessons\Lesson4Time.cs" />
     <Compile Include="Lessons\Lesson6AdvancedStreams.cs" />
+    <Compile Include="Tests\Lesson0LambdasTest.cs" />
     <Compile Include="Tests\Lesson7AsyncInvokeTest.cs" />
     <Compile Include="Tests\Lesson6AdvancedStreamsTest.cs" />
     <Compile Include="Tests\Lesson5EventsTest.cs" />
+    <Compile Include="Tests\ToDo.cs" />
     <Compile Include="Utils\Range.cs" />
+    <Compile Include="Utils\RxKoans.cs" />
     <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Lesson4TimeTest.cs" />
