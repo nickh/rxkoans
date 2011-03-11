@@ -25,6 +25,19 @@ namespace Koans.Lessons
             Assert.AreEqual(1110, received);
         }
 
+				[TestMethod]
+				public void ComposeableBeforeAndAfter()
+				{
+					var names = Range.Create(1, 6);
+					string a = "";
+					string b = "";
+
+					names.ToObservable().Do(n => a += n).Where(n => n.IsEven()).Do(n => b += n).Subscribe();
+					Assert.AreEqual(____, a);
+					Assert.AreEqual("246", b);
+
+				}
+
         [TestMethod]
         public void WeWroteThis()
         {
@@ -34,8 +47,6 @@ namespace Koans.Lessons
             Assert.AreEqual("[Bart, Wes, Erik]", received.AsString());
         }
         
-       
-
         [TestMethod]
         public void ConvertingEvents()
         {
@@ -44,6 +55,17 @@ namespace Koans.Lessons
             names.ToObservable().Select(x => x.___()).Subscribe(x => received += x + " ");
             Assert.AreEqual("we hope you are enjoying this ", received);
         }
+
+				[TestMethod]
+				public void CreatingAMoreRelevantEventStream()
+				{
+					string received = "";
+					var mouseXMovements = new[] { 100, 200, 150 };
+					var windowTopX = 50;
+					IObservable<int> relativemouse = mouseXMovements.ToObservable().Select((int x) => x - ___);
+					relativemouse.Subscribe(x => received += x + ", ");
+					Assert.AreEqual("50, 150, 100, ", received);
+				}
 
         [TestMethod]
         public void CheckingEverything()
@@ -56,7 +78,6 @@ namespace Koans.Lessons
         [TestMethod]
         public void CompositionMeansTheSumIsGreaterThanTheParts()
         {
-
             var numbers = Observable.Range(1, 10);
             numbers.Where(x => x > ___).Sum().Subscribe(x => Assert.AreEqual(19, x));
         }

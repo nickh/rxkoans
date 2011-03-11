@@ -1,4 +1,5 @@
-﻿using Koans.Utils;
+﻿using System.Drawing;
+using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CurrentLesson = Koans.Lessons.Lesson3Linq;
 
@@ -11,6 +12,7 @@ namespace Koans.Tests
 		public void TestAllQuestions()
 		{
 			KoanUtils.Verify<CurrentLesson>(l => l.Linq(), 11);
+			KoanUtils.Verify<CurrentLesson>(l => l.LinqOverMouseEvents(), new Point(75, 75));
 		}
 	}
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Concurrency;
 using System.Linq;
+using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Koans.Lessons
