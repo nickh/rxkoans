@@ -20,7 +20,7 @@ namespace Koans.Lessons
 
         [TestMethod]
         [Timeout(2000)]
-        public void Wait1Second()
+        public void LaunchingAnActionInTheFuture()
         {
             string received = "";
             TimeSpan delay = TimeSpan.FromSeconds(___);
@@ -30,7 +30,7 @@ namespace Koans.Lessons
 
         [TestMethod]
         [Timeout(2000)]
-        public void WaitingForGodot()
+        public void LaunchingAnEventInTheFuture()
         {
             string received = "";
             var time = TimeSpan.FromSeconds(___);

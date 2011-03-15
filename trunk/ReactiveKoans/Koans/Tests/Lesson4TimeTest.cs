@@ -12,8 +12,8 @@ namespace Koans.Tests
 		
 		public void TestAllQuestions()
 		{
-			Verify(l => l.Wait1Second(), 0);
-			Verify(l => l.WaitingForGodot(), 0);
+			Verify(l => l.LaunchingAnActionInTheFuture(), 0);
+			Verify(l => l.LaunchingAnEventInTheFuture(), 0);
 			Verify(l => l.AWatchedPot(), 0);
 		}
 

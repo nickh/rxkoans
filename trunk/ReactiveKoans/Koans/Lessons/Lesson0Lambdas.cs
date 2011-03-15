@@ -31,7 +31,7 @@ namespace Koans.Lessons
 		[TestMethod]
 		public void ButLambdasMightNotBeCalled()
 		{
-			RunIfNeeded(need: ____, action: () => Assert.Fail("Don't Run This"));
+			RunIfNeeded(shouldActionBeRun: ____, action: () => Assert.Fail("Don't Run This"));
 		}
 
 		[TestMethod]
@@ -48,14 +48,14 @@ namespace Koans.Lessons
 		}
 
 		[TestMethod]
-		public void LambdasCanReturnThing()
+		public void LambdasCanReturnAValue()
 		{
 			var message = HiFive(() => { return ___; });
 			Assert.AreEqual("Hey Bart, Give me 5", message);
 		}
 
 		[TestMethod]
-		public void LambdasAutomaticallyResultOf1Line()
+		public void LambdasAutomaticallyReturnSingleStatements()
 		{
 			var message = HiFive(() => ___);
 			Assert.AreEqual("Hey Llewellyn, Give me 5", message);
@@ -296,9 +296,9 @@ namespace Koans.Lessons
 			action();
 		}
 
-		public static void RunIfNeeded(bool need, Action action)
+		public static void RunIfNeeded(bool shouldActionBeRun, Action action)
 		{
-			if (need)
+			if (shouldActionBeRun)
 			{
 				action();
 			}
