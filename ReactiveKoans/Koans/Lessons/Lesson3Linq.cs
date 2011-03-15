@@ -42,16 +42,19 @@ namespace Koans.Lessons
 			public int ____ = 1;
 			public object ___ = "Please Fill in the blank";
 
+			public void HighlightCrossHairs(Point p)
+			{
+					Assert.AreEqual(p.X, p.Y);
+			}
 			public void HighlightCrossHairs(object o)
 			{
 				if (o is Point)
 				{
-					var p = (Point) o;
-					Assert.AreEqual(p.X, p.Y);
-				}
+					HighlightCrossHairs((Point)o);
+					}
 				else
 				{
-					Assert.Fail(o.ToString());
+					Assert.Fail("I expected a Point but got: " + o.ToString());
 				}
 			}
 

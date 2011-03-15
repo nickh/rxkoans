@@ -16,8 +16,8 @@ namespace Koans.Tests
 			KoanUtils.Verify<CurrentLesson>(l => l.ButLambdasMightNotBeCalled(), false);
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasCanUseLocalVariables(), "Awesome!");
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasAreTinyMethods(), "Passed In");
-			KoanUtils.Verify<CurrentLesson>(l => l.LambdasCanReturnThing(), "Bart");
-			KoanUtils.Verify<CurrentLesson>(l => l.LambdasAutomaticallyResultOf1Line(), "Llewellyn");
+			KoanUtils.Verify<CurrentLesson>(l => l.LambdasCanReturnAValue(), "Bart");
+			KoanUtils.Verify<CurrentLesson>(l => l.LambdasAutomaticallyReturnSingleStatements(), "Llewellyn");
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasCanUseParametersInReturn(), 5);
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasCanBeVeryTerse(), 8);
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasCanBeVeryVerbose(), 'a');

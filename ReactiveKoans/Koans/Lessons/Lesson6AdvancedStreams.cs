@@ -17,7 +17,7 @@ namespace Koans.Lessons
 			var you = new object[] {1, 2, 3}.ToObservable();
 			var me = new object[] {"A", "B", "C"}.ToObservable();
 			you.Merge(me).Subscribe(a => easy.Append(a + " "));
-			Assert.AreEqual(___, easy.ToString());
+			Assert.AreEqual(easy.ToString(), ___);
 		}
 
 
@@ -57,7 +57,7 @@ namespace Koans.Lessons
 			numbers.OnNext(2, 2, 2, 2, 2);
 			numbers.OnCompleted();
 			Assert.AreEqual(15, sum);
-			Assert.AreEqual(___, average);
+			Assert.AreEqual(average, ___);
 		}
 
 		#region Ignore

@@ -13,7 +13,7 @@ namespace Koans.Tests
 		{
 			KoanUtils.Verify<CurrentLesson>(l => l.ComposableAddition(), 1000);
 			KoanUtils.Verify<CurrentLesson>(l => l.ComposeableBeforeAndAfter(), "123456");
-			KoanUtils.Verify<CurrentLesson>(l => l.WeWroteThis(), 5);
+			KoanUtils.Verify<CurrentLesson>(l => l.WeWroteThis(), 4);
 			KoanUtils.AssertLesson<CurrentLesson>(l => l.ConvertingEvents(),
 			                                      l => StringUtils.call = (s, p) => ((String) s).ToLower());
 			KoanUtils.Verify<CurrentLesson>(l => l.CreatingAMoreRelevantEventStream(), 50);

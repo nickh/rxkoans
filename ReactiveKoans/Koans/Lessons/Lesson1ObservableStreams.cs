@@ -83,7 +83,7 @@ namespace Koans.Lessons
 			var observable = numbers.Do(n => sum += n);
 			Assert.AreEqual(0, sum);
 			observable.___();
-			Assert.AreEqual(10*11/2, sum);
+			Assert.AreEqual(1+2+3+4+5+6+7+8+9+10, sum);
 		}
 
 		[TestMethod]
