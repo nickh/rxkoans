@@ -119,13 +119,12 @@ namespace Koans.Lessons
 		public void MethodDuplication2Of2()
 		{
 			StartSong();
+
 			Sing("We gave the cat to a little kid");
-
 			SingVerse();
-
 			Sing("We sent the cat out on a " + ___);
-
 			SingVerse();
+			
 			AssertCatSong();
 		}
 

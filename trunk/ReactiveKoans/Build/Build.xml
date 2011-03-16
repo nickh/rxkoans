@@ -3,7 +3,7 @@
   <target name="createZip" depends="clean">
     <zip zipfile="output/RxKoans.zip">
       <fileset basedir="../">
-        <include name="koans/**/*.cs" />
+        <include name="**/*.cs" />
        <include name="reference/**" />
        <include name="**/*.sln" />
        <include name="**/*.csproj" />

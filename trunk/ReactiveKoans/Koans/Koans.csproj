@@ -67,7 +67,6 @@
     <Compile Include="Tests\Lesson7AsyncInvokeTest.cs" />
     <Compile Include="Tests\Lesson6AdvancedStreamsTest.cs" />
     <Compile Include="Tests\Lesson5EventsTest.cs" />
-    <Compile Include="Tests\ToDo.cs" />
     <Compile Include="Utils\Range.cs" />
     <Compile Include="Utils\RxKoans.cs" />
     <Compile Include="Utils\StringUtils.cs" />
