@@ -27,6 +27,13 @@ namespace Koans.Lessons
 		{
 			Run(() => Assert.AreEqual(true, ___));
 		}
+		[TestMethod]
+		public void LambdasAreActions()
+		{
+			Action lambda = () => Assert.AreEqual(true, ___);
+			lambda();
+		}
+		
 
 		[TestMethod]
 		public void ButLambdasMightNotBeCalled()
@@ -53,7 +60,12 @@ namespace Koans.Lessons
 			var message = HiFive(() => { return ___; });
 			Assert.AreEqual("Hey Bart, Give me 5", message);
 		}
-
+		[TestMethod]
+		public void LambdasThatReturnAreCalledFunctions()
+		{
+			Func<int, int> lambda = (a) => a*a;
+			Assert.AreEqual(___, lambda(5));
+		}
 		[TestMethod]
 		public void LambdasAutomaticallyReturnSingleStatements()
 		{
