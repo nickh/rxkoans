@@ -6,16 +6,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Koans.Lessons
 {
-    [TestClass]
-    public class Lesson3Linq
-    {
-        /*
-         * How to Run: Press Ctrl+R,T (go ahead, try it now)
-         * Step 1: find the 1st method that fails
-         * Step 2: Fill in the blank ____ to make it pass
-         * Step 3: run it again
-         * Note: Do not change anything other than the blank
-         */
+		[TestClass]
+		public class Lesson3Linq
+		{
+				/*
+				 * How to Run: Press Ctrl+R,T (go ahead, try it now)
+				 * Step 1: find the 1st method that fails
+				 * Step 2: Fill in the blank ____ to make it pass
+				 * Step 3: run it again
+				 * Note: Do not change anything other than the blank
+				 */
 			[TestMethod]
 			public void Linq()
 			{
@@ -37,7 +37,7 @@ namespace Koans.Lessons
 				results.Subscribe(HighlightCrossHairs);
 			}
 
-        #region Ignore
+				#region Ignore
 
 			public int ____ = 1;
 			public object ___ = "Please Fill in the blank";
@@ -58,6 +58,6 @@ namespace Koans.Lessons
 				}
 			}
 
-    	#endregion
-    }
+			#endregion
+		}
 }
