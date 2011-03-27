@@ -61,12 +61,6 @@ namespace Koans.Lessons
 			Assert.AreEqual("Hey Bart, Give me 5", message);
 		}
 		[TestMethod]
-		public void LambdasThatReturnAreCalledFunctions()
-		{
-			Func<int, int> lambda = (a) => a*a;
-			Assert.AreEqual(___, lambda(5));
-		}
-		[TestMethod]
 		public void LambdasAutomaticallyReturnSingleStatements()
 		{
 			var message = HiFive(() => ___);
@@ -78,6 +72,12 @@ namespace Koans.Lessons
 		{
 			var message = Run(___, (p) => p + 1);
 			Assert.AreEqual(6, message);
+		}
+		[TestMethod]
+		public void LambdasThatReturnAreCalledFunctions()
+		{
+			Func<int, int> lambda = (a) => a*a;
+			Assert.AreEqual(___, lambda(5));
 		}
 
 		[TestMethod]
@@ -113,15 +113,15 @@ namespace Koans.Lessons
 
 			Sing("But the cat came back");
 			Sing("The very next day");
-			Sing("Oh the cat came back");
+			Sing("Oh the " + ___ + " came back");
 			Sing("We thought he was a goner");
 			Sing("But the cat came back, he just wouldn't go away");
 
-			Sing("We sent the " + ___ + " out on a boat");
+			Sing("We sent the cat out on a boat");
 
 			Sing("But the cat came back");
 			Sing("The very next day");
-			Sing("Oh the cat came back");
+			Sing("Oh the " + ___ + " came back");
 			Sing("We thought he was a goner");
 			Sing("But the cat came back, he just wouldn't go away");
 			AssertCatSong();
@@ -154,7 +154,7 @@ namespace Koans.Lessons
 		{
 			StartSong();
 			Sing("100 bottles of beer on the wall");
-			Sing("100 bottles of beer");
+			Sing("100 bottles of " + ___);
 			Sing("Take one down, pass it around");
 			Sing("100 bottles of beer on the wall");
 
