@@ -13,6 +13,7 @@ namespace Koans.Tests
 		{
 			KoanUtils.Verify<CurrentLesson>(l => l.Merging(), "1 A 2 B 3 C ");
 			KoanUtils.Verify<CurrentLesson>(l => l.SplittingUp(), 2);
+			KoanUtils.Verify<CurrentLesson>(l => l.MergingEvents(),"I am perfect.");
 			KoanUtils.AssertLesson<CurrentLesson>(l => l.NeedToSubscribeImediatelyWhenSplitting(),
 			                                      l =>
 			                                      StringUtils.call =
