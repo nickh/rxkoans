@@ -32,6 +32,15 @@ namespace Koans.Lessons
 		}
 
 		[TestMethod]
+		public void ThisIsTheSameAsAnEventStream()
+		{
+			var events = new Subject<int>();
+			events.Subscribe(x => Assert.AreEqual(___, x));
+			events.OnNext(37);
+		}
+
+
+		[TestMethod]
 		public void SimpleReturn()
 		{
 			var received = "";
@@ -54,6 +63,17 @@ namespace Koans.Lessons
 			var received = 0;
 			var numbers = new[] {3, 4};
 			numbers.ToObservable().Subscribe((int x) => received += x);
+			Assert.AreEqual(___, received);
+		}
+
+		[TestMethod]
+		public void ThisIsStillAnEventStream()
+		{
+			var received = 0;
+			var numbers = new Subject<int>();
+			numbers.Subscribe((int x) => received += x);
+			numbers.OnNext(10);
+			numbers.OnNext(5);
 			Assert.AreEqual(___, received);
 		}
 
@@ -83,7 +103,36 @@ namespace Koans.Lessons
 			var observable = numbers.Do(n => sum += n);
 			Assert.AreEqual(0, sum);
 			observable.___();
-			Assert.AreEqual(1+2+3+4+5+6+7+8+9+10, sum);
+			Assert.AreEqual(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10, sum);
+		}
+
+		[TestMethod]
+		public void EventsBeforeYouSubscribedDoNotCount()
+		{
+			var sum = 0;
+			var numbers = new Subject<int>();
+			var observable = numbers.Do(n => sum += n);
+			numbers.OnNext(1);
+			numbers.OnNext(2);
+			observable.Subscribe();
+			numbers.OnNext(3);
+			numbers.OnNext(4);
+			Assert.AreEqual(___, sum);
+		}
+
+		[TestMethod]
+		public void EventsAfterYouUnsubscribDoNotCount()
+		{
+			var sum = 0;
+			var numbers = new Subject<int>();
+			var observable = numbers.Do(n => sum += n);
+			var subscription = observable.Subscribe();
+			numbers.OnNext(1);
+			numbers.OnNext(2);
+			subscription.Dispose();
+			numbers.OnNext(3);
+			numbers.OnNext(4);
+			Assert.AreEqual(___, sum);
 		}
 
 		[TestMethod]
