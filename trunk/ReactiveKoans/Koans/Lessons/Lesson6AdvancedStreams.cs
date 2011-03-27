@@ -28,20 +28,18 @@ namespace Koans.Lessons
 			var s1 = new Subject<String>();
 			var s2 = new Subject<String>();
 			s1.Subscribe(s => first.Add(s));
-			s1.Merge(s2).Subscribe(a => both.Add(a));
-			
+			s1.Merge(s2).Subscribe(s => both.Add(s));
+
 
 			s1.OnNext("I");
-			s2.OnNext("would");
-			s1.OnNext("Love");
-			s2.OnNext("to");
-			s2.OnNext("have");
-			s2.OnNext("breakfast");
-			s2.OnNext("with");
-			s1.OnNext("you");
+			s1.OnNext("am");
+			s2.OnNext("nobody.");
+			s2.OnNext("Nobody");
+			s2.OnNext("is");
+			s1.OnNext("perfect.");
 			
-			Assert.AreEqual("I would Love to have breakfast with you", String.Join(" ",both));
-			Assert.AreEqual("I Love you", String.Join(" ",first));
+			Assert.AreEqual("I am nobody. Nobody is perfect.", String.Join(" ",both));
+			Assert.AreEqual(___, String.Join(" ",first));
 		}
 
 
@@ -50,8 +48,8 @@ namespace Koans.Lessons
 		{
 			var oddsAndEvens = new[] {"", ""};
 			var numbers = Observable.Range(1, 9);
-			var split = numbers.GroupBy(n => n% 2);
-			split.Subscribe(group => group.Subscribe(n => oddsAndEvens[group.Key] += n));
+			var split = numbers.GroupBy(n => n% ____);
+			split.Subscribe((IGroupedObservable<int, int> group) => group.Subscribe(n => oddsAndEvens[group.Key] += n));
 			var evens = oddsAndEvens[0];
 			var odds = oddsAndEvens[1];
 			Assert.AreEqual("2468", evens);
@@ -64,7 +62,7 @@ namespace Koans.Lessons
 			var averages = new[] {0.0, 0.0};
 			var numbers = new[] {22, 22, 99, 22, 101, 22}.ToObservable();
 			var split = numbers.GroupBy(n => n%2);
-			split.Subscribe(g => g.Average().____(a => averages[g.Key] = a));
+			split.Subscribe((IGroupedObservable<int, int> g) => g.Average().____(a => averages[g.Key] = a));
 			Assert.AreEqual(22, averages[0]);
 			Assert.AreEqual(100, averages[1]);
 		}
