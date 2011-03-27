@@ -14,7 +14,7 @@ namespace Koans.Tests
 		{
 			Verify(l => l.LaunchingAnActionInTheFuture(), 0);
 			Verify(l => l.LaunchingAnEventInTheFuture(), 0);
-			Verify(l => l.AWatchedPot(), 0);
+			Verify(l => l.YouCanPlaceATimelimitOnHowLongAnEventShouldTake(), 2100);
 		}
 
 

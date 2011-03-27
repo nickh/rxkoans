@@ -20,13 +20,37 @@ namespace Koans.Lessons
 			Assert.AreEqual(easy.ToString(), ___);
 		}
 
+		[TestMethod]
+		public void MergingEvents()
+		{
+			var first = new List<String>();
+			var both = new List<String>();
+			var s1 = new Subject<String>();
+			var s2 = new Subject<String>();
+			s1.Subscribe(s => first.Add(s));
+			s1.Merge(s2).Subscribe(a => both.Add(a));
+			
+
+			s1.OnNext("I");
+			s2.OnNext("would");
+			s1.OnNext("Love");
+			s2.OnNext("to");
+			s2.OnNext("have");
+			s2.OnNext("breakfast");
+			s2.OnNext("with");
+			s1.OnNext("you");
+			
+			Assert.AreEqual("I would Love to have breakfast with you", String.Join(" ",both));
+			Assert.AreEqual("I Love you", String.Join(" ",first));
+		}
+
 
 		[TestMethod]
 		public void SplittingUp()
 		{
 			var oddsAndEvens = new[] {"", ""};
 			var numbers = Observable.Range(1, 9);
-			var split = numbers.GroupBy(n => n%____);
+			var split = numbers.GroupBy(n => n% 2);
 			split.Subscribe(group => group.Subscribe(n => oddsAndEvens[group.Key] += n));
 			var evens = oddsAndEvens[0];
 			var odds = oddsAndEvens[1];
