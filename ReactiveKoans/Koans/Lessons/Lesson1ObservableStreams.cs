@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
@@ -53,7 +54,7 @@ namespace Koans.Lessons
 		public void TheLastEvent()
 		{
 			var received = "";
-			var names = new[] {"Foo", "Bar"};
+			var names = new[] { "Foo", "Bar" };
 			names.ToObservable().Subscribe((s) => received = s);
 			Assert.AreEqual(___, received);
 		}
@@ -62,7 +63,7 @@ namespace Koans.Lessons
 		public void EveryThingCounts()
 		{
 			var received = 0;
-			var numbers = new[] {3, 4};
+			var numbers = new[] { 3, 4 };
 			numbers.ToObservable().Subscribe((int x) => received += x);
 			Assert.AreEqual(___, received);
 		}
@@ -135,6 +136,22 @@ namespace Koans.Lessons
 			numbers.OnNext(4);
 			Assert.AreEqual(___, sum);
 		}
+		[TestMethod]
+		public void EventsWhileSubscribing()
+		{
+			var recieved = new List<string>();
+			var words = new Subject<string>();
+			var observable = words.Do(recieved.Add);
+			words.OnNext("Peter");
+			words.OnNext("said");
+			var subscription = observable.Subscribe();
+			words.OnNext("you");
+			words.OnNext("look");
+			words.OnNext("pretty");
+			subscription.Dispose();
+			words.OnNext("ugly");
+			Assert.AreEqual(___, String.Join(" ", recieved));
+		}
 
 		[TestMethod]
 		public void UnsubscribeAtAnyTime()
@@ -143,20 +160,30 @@ namespace Koans.Lessons
 			var numbers = Range.Create(1, 9);
 			IDisposable un = null;
 			un = numbers.ToObservable(Scheduler.NewThread).Subscribe((int x) =>
-			                                                         	{
-			                                                         		received += x;
-			                                                         		if (x == 5)
-			                                                         		{
-			                                                         			un.___();
-			                                                         		}
-			                                                         	});
+																																{
+																																	received += x;
+																																	if (x == 5)
+																																	{
+																																		un.___();
+																																	}
+																																});
 			Thread.Sleep(100);
 			Assert.AreEqual("12345", received);
 		}
 
+		[TestMethod]
+		public void TakeUntilFull()
+		{
+			var received = "";
+			var subject = new Subject<int>();
+			subject.TakeUntil(subject.Where(x => x > ____)).Subscribe(x => received += x);
+			subject.OnNext(Range.Create(1, 9).ToArray());
+			Assert.AreEqual("12345", received);
+		}
 		#region Ignore
 
 		public object ___ = "Please Fill in the blank";
+		public int ____ = 100;
 
 		#endregion
 	}

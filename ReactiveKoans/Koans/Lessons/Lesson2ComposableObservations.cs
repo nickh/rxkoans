@@ -27,7 +27,7 @@ namespace Koans.Lessons
 				}
 
 				[TestMethod]
-				public void ComposeableBeforeAndAfter()
+				public void ComposableBeforeAndAfter()
 				{
 					var names = Range.Create(1, 6);
 					string a = "";
