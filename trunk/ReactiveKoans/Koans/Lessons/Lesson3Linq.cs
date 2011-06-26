@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Reactive.Linq;
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -23,7 +24,7 @@ namespace Koans.Lessons
 				var results = from x in numbers
 											where x % ____ == 0
 											select x.ToString();
-				var strings = results.ToEnumerable();
+				var strings = results.ToEnumerable().ToArray();
 				Assert.AreEqual("11,22,33,44,55,66,77,88,99", String.Join(",", strings));
 			}
 

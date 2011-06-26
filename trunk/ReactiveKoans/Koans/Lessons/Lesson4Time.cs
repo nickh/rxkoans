@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Concurrency;
-using System.Linq;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Threading;
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,7 +27,7 @@ namespace Koans.Lessons
 		{
             string received = "";
             TimeSpan delay = TimeSpan.FromSeconds(___);
-			Scheduler.Immediate.Schedule(() => received = "Finished", delay);
+			Scheduler.Immediate.Schedule(delay, () => received = "Finished");
 			Assert.AreEqual("Finished", received);
 		}
 

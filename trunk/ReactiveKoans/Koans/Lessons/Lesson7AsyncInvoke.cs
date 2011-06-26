@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Threading;
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,18 +22,18 @@ namespace Koans.Lessons
 			var sub = new Subject<double>();
 			Func<int, double> halve = x =>
 			                          	{
-			                          		called += _____;
+																		called += _____;
 			                          		return x*0.5;
 			                          	};
 			double? result = 0;
 			sub.Subscribe(n =>
 			              	{
-			              		called += ____;
+												called += ____;
 			              		result = n;
 			              	});
 			halve.BeginInvoke(101, iar =>
 			                       	{
-			                       		called += ______;
+																called += ______;
 			                       		sub.OnNext(halve.EndInvoke(iar));
 			                       		sub.OnCompleted();
 			                       	}, null);
@@ -45,7 +49,8 @@ namespace Koans.Lessons
 			double result = 0;
 			var asyncInvoker = Observable.FromAsyncPattern<int, double>(halve.BeginInvoke,
 			                                                            halve.EndInvoke);
-			asyncInvoker(___).Run(n => result = n);
+			asyncInvoker(___).SubscribeOn(Scheduler.Immediate).Run(n => result = n);
+
 			Assert.AreEqual(24, result);
 		}
 
@@ -61,7 +66,7 @@ namespace Koans.Lessons
 			double result = 0;
 			var incAsync = Observable.FromAsyncPattern<int, int>(inc.BeginInvoke,
 			                                                     inc.EndInvoke);
-			incAsync(1).Merge(incAsync(9)).Sum().Run(n => result = n);
+			incAsync(1).Merge(incAsync(9)).Sum().SubscribeOn(Scheduler.Immediate).Subscribe(n => result = n);
 			Assert.AreEqual(12, result);
 		}
 
@@ -76,7 +81,7 @@ namespace Koans.Lessons
 			string result = null;
 			var incAsync = highFive.ToAsync();
 			var timeout = TimeSpan.FromMilliseconds(500);
-			incAsync(5).Timeout(timeout, Observable.Return("Too Slow Joe")).Run(n => result = n);
+			incAsync(5).Timeout(timeout, Observable.Return("Too Slow Joe")).SubscribeOn(Scheduler.Immediate).Subscribe(n => result = n);
 			Assert.AreEqual(___, result);
 		}
 
@@ -93,7 +98,7 @@ namespace Koans.Lessons
 			                                	};
 			var async = highFive.ToAsync();
 			var timeout = TimeSpan.FromMilliseconds(500);
-			async("Joe").Timeout(timeout, Observable.Return("Too Slow Joe")).Run(s => returned = s);
+			async("Joe").Timeout(timeout, Observable.Return("Too Slow Joe")).SubscribeOn(Scheduler.Immediate).Subscribe(s => returned = s);
 			ThreadUtils.WaitUntil(() => result != null);
 			Assert.AreEqual("Too Slow Joe", returned);
 			Assert.AreEqual(result, ____);
@@ -112,8 +117,9 @@ namespace Koans.Lessons
 			var timeout = TimeSpan.FromMilliseconds(500);
 			Func<int, IObservable<string>> launch = (int i) => incAsync(i).Finally(() => disposed += ____ + i + ",");
 			var all = launch(1).Merge(launch(2)).Merge(launch(3)).Merge(launch(4)).Merge(launch(5));
-			all.Run();
 
+			all.Run();
+			
 			Assert.AreEqual("D1,D2,D3,D4,D5,", disposed);
 		}
 

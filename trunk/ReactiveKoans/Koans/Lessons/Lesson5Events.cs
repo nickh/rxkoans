@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,8 +17,7 @@ namespace Koans.Lessons
         public void TheMainEvent()
         {
             var received = new StringBuilder();
-            IObservable<IEvent<TextChangedEventArgs>> textChanges = Observable.FromEvent<TextChangedEventArgs>(this,
-                                                                                                               "TextChanged");
+            var textChanges = Observable.FromEventPattern<TextChangedEventArgs>(this, "TextChanged");                                                                                                
             using (textChanges.Subscribe(e => received.Append(e.EventArgs.value)))
             {
                 TextChanged(null, new TextChangedEventArgs {value = "B"});
