@@ -124,7 +124,7 @@ Thread.Sleep(110);
 
 		#region Ignore
 
-		public int ___ = 100;
+		public int ___ = 3;
 		public object ____ = "Please Fill in the blank";
 
 
