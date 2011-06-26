@@ -40,9 +40,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.CoreEx">
-      <HintPath>..\reference\System.CoreEx.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Reactive">
       <HintPath>..\reference\System.Reactive.dll</HintPath>
