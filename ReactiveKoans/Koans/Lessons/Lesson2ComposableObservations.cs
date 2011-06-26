@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
