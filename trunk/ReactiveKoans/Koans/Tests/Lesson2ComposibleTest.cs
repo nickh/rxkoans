@@ -12,7 +12,7 @@ namespace Koans.Tests
 		public void TestAllQuestions()
 		{
 			KoanUtils.Verify<CurrentLesson>(l => l.ComposableAddition(), 1000);
-			KoanUtils.Verify<CurrentLesson>(l => l.ComposeableBeforeAndAfter(), "123456");
+			KoanUtils.Verify<CurrentLesson>(l => l.ComposableBeforeAndAfter(), "123456");
 			KoanUtils.Verify<CurrentLesson>(l => l.WeWroteThis(), 4);
 			KoanUtils.AssertLesson<CurrentLesson>(l => l.ConvertingEvents(),
 			                                      l => StringUtils.call = (s, p) => ((String) s).ToLower());

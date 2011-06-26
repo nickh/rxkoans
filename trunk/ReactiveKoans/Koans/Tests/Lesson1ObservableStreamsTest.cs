@@ -26,6 +26,7 @@ namespace Koans.Tests
 			                                      (s, p) => ObservableExtensions.Subscribe((IObservable<int>) s));
 			KoanUtils.Verify<CurrentLesson>(l => l.EventsBeforeYouSubscribedDoNotCount(), 7);
 			KoanUtils.Verify<CurrentLesson>(l => l.EventsAfterYouUnsubscribDoNotCount(), 3);
+			KoanUtils.Verify<CurrentLesson>(l => l.EventsWhileSubscribing(), "you look pretty");
 			KoanUtils.AssertLesson<CurrentLesson>(l => l.UnsubscribeAtAnyTime(),
 			                                      l =>
 			                                      StringUtils.call =
@@ -34,6 +35,7 @@ namespace Koans.Tests
 			                                      		((IDisposable) s).Dispose();
 			                                      		return 1;
 			                                      	});
+			KoanUtils.Verify<CurrentLesson>(l => l.TakeUntilFull(), 5);
 		}
 	}
 }

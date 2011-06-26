@@ -6,6 +6,7 @@ using System.Reactive.Subjects;
 using System.Threading;
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace Koans.Lessons
 {
@@ -59,9 +60,73 @@ namespace Koans.Lessons
 			Assert.AreEqual("Started, Tepid", String.Join(", ", received));
 		}
 
+		[TestMethod]
+		[Timeout(2000)]
+		public void Throttling()
+		{
+			var received = new List<string>();
+			var events = new Subject<string>();
+			events.Throttle(TimeSpan.FromMilliseconds(100)).Subscribe(i => received.Add(i));
+			events.OnNext("f");
+			events.OnNext("fr");
+			events.OnNext("fro");
+			events.OnNext("from");
+			Thread.Sleep(110);
+			events.OnNext("s");
+			events.OnNext("sc");
+			events.OnNext("sco");
+			events.OnNext("scot");
+			events.OnNext("scott");
+
+			Thread.Sleep(110);
+
+			Assert.AreEqual(____, String.Join(" ", received));
+		}
+		[TestMethod]
+		[Timeout(2000)]
+		public void Buffering()
+		{
+			var received = new List<String>();
+			var events = new Subject<char>();
+			events.Buffer(TimeSpan.FromMilliseconds(100)).Select(c => new String(c.ToArray())).Subscribe(s => received.Add(s));
+		  events.OnNext('S');
+			events.OnNext('c');
+			events.OnNext('o');
+			events.OnNext('t');
+			events.OnNext('t');
+			Thread.Sleep(110);
+
+			events.OnNext('R');
+			events.OnNext('e');
+			events.OnNext('e');
+			events.OnNext('d');
+			Thread.Sleep(110);
+
+			Assert.AreEqual(____, String.Join(" ", received));
+		}
+		[TestMethod]
+		[Timeout(2000)]
+		public void TimeBetweenCalls()
+		{
+			var received = new List<String>();
+			var events = new Subject<String>();
+			events.TimeInterval().Where(t => t.Interval.TotalMilliseconds > 100).Subscribe(s => received.Add(s.Value));
+			events.OnNext("too");
+			events.OnNext("fast");
+			Thread.Sleep(110);
+			events.OnNext("slow");
+Thread.Sleep(110);
+			events.OnNext("down");
+
+			Assert.AreEqual(____, String.Join(" ", received));
+		}
+
+
 		#region Ignore
 
 		public int ___ = 100;
+		public object ____ = "Please Fill in the blank";
+
 
 		#endregion
 	}

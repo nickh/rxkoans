@@ -12,15 +12,15 @@ namespace Koans.Tests
 		
 		public void TestAllQuestions()
 		{
-			Verify(l => l.LaunchingAnActionInTheFuture(), 0);
-			Verify(l => l.LaunchingAnEventInTheFuture(), 0);
-			Verify(l => l.YouCanPlaceATimelimitOnHowLongAnEventShouldTake(), 2100);
+			KoanUtils.Verify<CurrentLesson>(l => l.LaunchingAnActionInTheFuture(), 0);
+			KoanUtils.Verify<CurrentLesson>(l => l.LaunchingAnEventInTheFuture(), 0);
+			KoanUtils.Verify<CurrentLesson>(l => l.YouCanPlaceATimelimitOnHowLongAnEventShouldTake(), 2100);
+			KoanUtils.Verify<CurrentLesson>(l => l.Throttling(), "from scott");
+			KoanUtils.Verify<CurrentLesson>(l => l.Buffering(), "Scott Reed");
+			KoanUtils.Verify<CurrentLesson>(l => l.TimeBetweenCalls(), "slow down");
+
 		}
 
 
-		public void Verify(Action<CurrentLesson> test, int answer)
-		{
-			KoanUtils.AssertLesson(test, l => l.___ = answer, testFailure: false);
-		}
 	}
 }
