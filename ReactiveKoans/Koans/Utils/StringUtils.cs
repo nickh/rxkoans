@@ -31,7 +31,11 @@ namespace Koans.Utils
 			var r = call(o, null);
 			return r;
 		}
-
+		public static object ___(this Object o, object b)
+		{
+			var r = call(o, new []{b});
+			return r;
+		}
 		public static object ____<T>(this IObservable<T> o, Action<T> action)
 		{
 			return call(o, new[] {action});

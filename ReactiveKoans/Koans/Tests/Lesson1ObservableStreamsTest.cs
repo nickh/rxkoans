@@ -2,6 +2,7 @@
 using Koans.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CurrentLesson = Koans.Lessons.Lesson1ObservableStreams;
+using System.Reactive.Subjects;
 
 namespace Koans.Tests
 {
@@ -14,6 +15,11 @@ namespace Koans.Tests
 			KoanUtils.Verify<CurrentLesson>(l => l.SimpleSubscription(), 42);
 			KoanUtils.Verify<CurrentLesson>(l => l.WhatGoesInComesOut(), 101);
 			KoanUtils.Verify<CurrentLesson>(l => l.ThisIsTheSameAsAnEventStream(), 37);
+			KoanUtils.AssertLesson<CurrentLesson>(l => l.HowEventStreamsRelateToObservables(),
+												  l =>
+												  StringUtils.call =
+												  (s, p) => { ((Subject<int>)s).OnNext(((int)p[0])); return 0; });
+			KoanUtils.Verify<CurrentLesson>(l => l.EventStreamsHaveMultipleEvents(), 17);
 			KoanUtils.Verify<CurrentLesson>(l => l.SimpleReturn(), "Foo");
 			KoanUtils.Verify<CurrentLesson>(l => l.TheLastEvent(), "Bar");
 			KoanUtils.Verify<CurrentLesson>(l => l.EveryThingCounts(), 7);
