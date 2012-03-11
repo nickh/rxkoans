@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Koans.Lessons
 {
@@ -33,8 +34,19 @@ namespace Koans.Lessons
 			Action lambda = () => Assert.AreEqual(true, ___);
 			lambda();
 		}
-		
-
+		[TestMethod]
+		public void LambdasAreNotRunAtDeclaration()
+		{
+			int i = 1;
+			var dictionary = new Dictionary<char, object>();
+			dictionary['a'] = i++;
+			dictionary['b'] = (Action)(() => i++);
+			dictionary['c'] = i++;
+			Assert.AreEqual(1, dictionary['a']);
+			Assert.AreEqual(_______, dictionary['c']);
+		}		
+		//Q: Why didn't the i++ get run for dictionary entry b ?
+		//A: 
 		[TestMethod]
 		public void ButLambdasMightNotBeCalled()
 		{
@@ -139,7 +151,8 @@ namespace Koans.Lessons
 			
 			AssertCatSong();
 		}
-
+		//Q: How did we remove all the duplication from method 1 of 2?
+		//A:
 		private void SingVerse()
 		{
 			Sing("But the cat came back");
@@ -174,7 +187,8 @@ namespace Koans.Lessons
 
 			AssertBeerSong();
 		}
-
+		//Q: Since the duplication was not exact, how did we remove all the duplication from method 1 of 2?
+		//A:
 		private void SingVerse(Object num)
 		{
 			Sing(num + " bottles of beer on the wall");
@@ -219,7 +233,10 @@ namespace Koans.Lessons
 			SingVerse(17, (int n) => GetNextPrime(n), "These are the primes, that we find fine!");
 			AssertNumberSong();
 		}
-
+		//Q: Since the duplication was not exact, and it wasn't just a value, how did we remove all the duplication from method 1 of 2?
+		//A:
+		//Lambdas allow you to create API from what used to be written as patterns. 
+		//Reactive framework is using Lambdas to create an API for the best practices of Asychronous programming patterns.
 		private void SingVerse(int number, Func<int, int> func, string endWith)
 		{
 			Sing(number + "! ");

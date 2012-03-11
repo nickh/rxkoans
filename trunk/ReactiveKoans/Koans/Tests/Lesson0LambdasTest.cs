@@ -14,6 +14,7 @@ namespace Koans.Tests
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasAreBlocksOfCode(), true);
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasAreActions(), true);
 			KoanUtils.Verify<CurrentLesson>(l => l.GettingStarted1ReadingTheErrorMessage(), "Harry Potter");
+			KoanUtils.Verify<CurrentLesson>(l => l.LambdasAreNotRunAtDeclaration(), 2);
 			KoanUtils.Verify<CurrentLesson>(l => l.ButLambdasMightNotBeCalled(), false);
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasCanUseLocalVariables(), "Awesome!");
 			KoanUtils.Verify<CurrentLesson>(l => l.LambdasAreTinyMethods(), "Passed In");

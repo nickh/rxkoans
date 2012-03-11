@@ -71,14 +71,14 @@ namespace Koans.Lessons
 			events.OnNext("fr");
 			events.OnNext("fro");
 			events.OnNext("from");
-			Thread.Sleep(110);
+			Thread.Sleep(120);
 			events.OnNext("s");
 			events.OnNext("sc");
 			events.OnNext("sco");
 			events.OnNext("scot");
 			events.OnNext("scott");
 
-			Thread.Sleep(110);
+			Thread.Sleep(120);
 
 			Assert.AreEqual(____, String.Join(" ", received));
 		}
@@ -94,13 +94,13 @@ namespace Koans.Lessons
 			events.OnNext('o');
 			events.OnNext('t');
 			events.OnNext('t');
-			Thread.Sleep(110);
+			Thread.Sleep(120);
 
 			events.OnNext('R');
 			events.OnNext('e');
 			events.OnNext('e');
 			events.OnNext('d');
-			Thread.Sleep(110);
+			Thread.Sleep(120);
 
 			Assert.AreEqual(____, String.Join(" ", received));
 		}
@@ -113,9 +113,9 @@ namespace Koans.Lessons
 			events.TimeInterval().Where(t => t.Interval.TotalMilliseconds > 100).Subscribe(s => received.Add(s.Value));
 			events.OnNext("too");
 			events.OnNext("fast");
-			Thread.Sleep(110);
+			Thread.Sleep(120);
 			events.OnNext("slow");
-Thread.Sleep(110);
+			Thread.Sleep(120);
 			events.OnNext("down");
 
 			Assert.AreEqual(____, String.Join(" ", received));

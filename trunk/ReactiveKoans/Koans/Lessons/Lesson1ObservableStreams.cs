@@ -32,7 +32,8 @@ namespace Koans.Lessons
 		{
 			Observable.Return(___).Subscribe(x => Assert.AreEqual(101, x));
 		}
-
+		//Q: Which interface Rx apply? (hint: what does "Return()" return)
+		//A: 
 		[TestMethod]
 		public void ThisIsTheSameAsAnEventStream()
 		{
@@ -40,7 +41,34 @@ namespace Koans.Lessons
 			events.Subscribe(x => Assert.AreEqual(___, x));
 			events.OnNext(37);
 		}
+		//Q: What is the relationship between "ThisIsTheSameAsAnEventStream()" and "SimpleSubscription()"?
+		//A:
+		[TestMethod]
+		public void HowEventStreamsRelateToObservables()
+		{
+			int observableResult = 1;
+			Observable.Return(73).Subscribe(i => observableResult = i);
+			int eventStreamResult = 1;
+			var events = new Subject<int>();
+			events.Subscribe(i => eventStreamResult = i);
+			events.___(73);
+			Assert.AreEqual(observableResult, eventStreamResult);
+		}
+		//Q: What does Observable.Return() map to for a Subject?
+		//A: 
 
+		[TestMethod]
+		public void EventStreamsHaveMultipleEvents()
+		{
+			int eventStreamResult = 0;
+			var events = new Subject<int>();
+			events.Subscribe(i => eventStreamResult += i);
+			events.OnNext(10);
+			events.OnNext(7);
+			Assert.AreEqual(____, eventStreamResult);
+		}
+		//Q: What does Observable.Return() map to for a Subject?
+		//A: 
 
 		[TestMethod]
 		public void SimpleReturn()
