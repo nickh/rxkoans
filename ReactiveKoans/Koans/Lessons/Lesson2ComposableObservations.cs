@@ -61,7 +61,6 @@ namespace Koans.Lessons
 				{
 					string received = "";
 					var mouseXMovements = new[] { 100, 200, 150 };
-					var windowTopX = 50;
 					IObservable<int> relativemouse = mouseXMovements.ToObservable().Select((int x) => x - ___);
 					relativemouse.Subscribe(x => received += x + ", ");
 					Assert.AreEqual("50, 150, 100, ", received);

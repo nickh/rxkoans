@@ -4,7 +4,6 @@
     <zip zipfile="output/RxKoans.zip">
       <fileset basedir="../">
         <include name="**/*.cs" />
-       <include name="reference/**" />
        <include name="**/*.sln" />
        <include name="**/*.csproj" />
        <include name="**/*.rtf" />
