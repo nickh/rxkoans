@@ -187,7 +187,7 @@ namespace Koans.Lessons
 			var received = "";
 			var numbers = Range.Create(1, 9);
 			IDisposable un = null;
-			un = numbers.ToObservable(Scheduler.NewThread).Subscribe((int x) =>
+			un = numbers.ToObservable(NewThreadScheduler.Default).Subscribe((int x) =>
 																																{
 																																	received += x;
 																																	if (x == 5)

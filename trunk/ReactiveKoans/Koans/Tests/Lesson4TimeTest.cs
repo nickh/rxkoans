@@ -12,8 +12,8 @@ namespace Koans.Tests
 		
 		public void TestAllQuestions()
 		{
-			//KoanUtils.Verify<CurrentLesson>(l => l.LaunchingAnActionInTheFuture(), 0);
-			//KoanUtils.Verify<CurrentLesson>(l => l.LaunchingAnEventInTheFuture(), 0);
+			KoanUtils.Verify<CurrentLesson>(l => l.LaunchingAnActionInTheFuture(), 0);
+			KoanUtils.Verify<CurrentLesson>(l => l.LaunchingAnEventInTheFuture(), 0);
 			KoanUtils.Verify<CurrentLesson>(l => l.YouCanPlaceATimelimitOnHowLongAnEventShouldTake(), 2100);
 			KoanUtils.Verify<CurrentLesson>(l => l.Throttling(), "from scott");
 			KoanUtils.Verify<CurrentLesson>(l => l.Buffering(), "Scott Reed");
